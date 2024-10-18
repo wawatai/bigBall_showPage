@@ -99,12 +99,22 @@ $(function(){
 
     //html+css自動計算a herf+background
 
+// $(function(){
+//     $('li').each(function(index){
+//         $($('#demo'+index+'').children('a')).attr('href','./images/demo_'+index+'.jpg');
+//         var myIndex = index + 1;
+//         $($('#demo'+index+'').children('a')).attr('data-title','DEMO_'+myIndex+'');
+//         $($('#demo'+index+'').children('a')).css('background','url(./images/demo_'+index+'.jpg)');
+//         $($('#demo'+index+'').children('a')).css('background-size','cover');
+//     })
+// })
+
 $(function(){
     $('li').each(function(index){
-        $($('#demo'+index+'').children('a')).attr('href','./images/demo_'+index+'.jpg');
+        $($('#demo'+index+'').children('a')).attr('href','./img/demo_'+index+'.png');
         var myIndex = index + 1;
         $($('#demo'+index+'').children('a')).attr('data-title','DEMO_'+myIndex+'');
-        $($('#demo'+index+'').children('a')).css('background','url(./images/demo_'+index+'.jpg)');
+        $($('#demo'+index+'').children('a')).css('background','url(./img/demo_'+index+'.png)');
         $($('#demo'+index+'').children('a')).css('background-size','cover');
     })
 })
