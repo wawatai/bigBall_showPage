@@ -127,7 +127,8 @@ $(function(){
         $('#demo'+index+' input[type="checkbox"]').click(function(){
             if($('#demo'+index+' input[type="checkbox"]').prop('checked')) {
                 $('.shoppingWindow div:nth-of-type('+myIndex+')').addClass('display');
-                $('.shoppingWindow div:nth-of-type('+myIndex+')').css('background','url(./images/demo_'+index+'.jpg)');
+                // $('.shoppingWindow div:nth-of-type('+myIndex+')').css('background','url(./images/demo_'+index+'.jpg)');
+                $('.shoppingWindow div:nth-of-type('+myIndex+')').css('background','url(./img/demo_'+index+'.png)');
                 $('.shoppingWindow div:nth-of-type('+myIndex+')').css('background-size','cover');
             } else {
                 $('.shoppingWindow div:nth-of-type('+myIndex+')').removeClass('display');
