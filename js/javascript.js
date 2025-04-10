@@ -1,5 +1,54 @@
-//header按鈕
+// json獲取生成
+;(async () => {
+  try {
+    const response = await fetch("./img.json")
+    if (!response.ok) {
+      throw new Error("失敗" + response.status)
+    }
+    const images = await response.json()
+    const gallery = document.querySelector("main .mainBox")
+    const list = document.querySelector("main .left ul")
+    images.forEach((src) => {
+      const div = document.createElement("div")
+      div.setAttribute("id", src.id)
+      div.innerHTML = `
+        <a href="./img/${src.id}.png" data-lightbox="demo" data-title="" style="background: url(&quot;./img/${src.id}.png&quot;) 0% 0% / cover;"></a>
+        <h1>
+          ${src.name}
+          <p>
+            <label>
+              <input type="checkbox">
+              <i class="fas fa-check"></i>
+            </label>
+            pick
+          </p>
+          <p class="link" onclick="window.open('https://art-demo.sog99.net/lb_login/${src.name}/')">
+            link
+          </p>
+        </h1>`
+      gallery.appendChild(div)
+      const li = document.createElement("li")
+      li.setAttribute("id", `btn${src.sort}`)
+      li.innerHTML = `${src.name}<span></span>`
+      list.appendChild(li)
+      li.addEventListener("click", () => {
+        window.scrollTo({
+          top: document.querySelector(`#demo_${src.sort}`).offsetTop-60,
+          behavior:"smooth"
+        })
+      })
+    })
+    document.querySelectorAll('input[type="checkbox"]').forEach(input=>{
+      input.addEventListener('change',()=>{
+        input.closest("p").classList.toggle('active')
+      })
+    })
+  } catch (error) {
+    console.error("載入圖片失敗:", error)
+  }
+})()
 
+//header按鈕
 $(function () {
   $("header button").click(function () {
     $(this).toggleClass("active")
@@ -48,23 +97,7 @@ $(function () {
   drag(obj) //傳入的必須是jQuery物件，否則不能呼叫jQuery的自定義函式
 })
 
-//左列點擊時頁面自動定位效果
-
-$(function () {
-  $("li").each(function (index) {
-    $("#btn" + index + "").click(function () {
-      $("html,body").animate(
-        {
-          scrollTop: $("#demo" + index + "").offset().top - 60,
-        },
-        500
-      )
-    })
-  })
-})
-
 //回到頂端按鈕
-
 $(function () {
   $(window).scroll(function () {
     var scrollVal = $(this).scrollTop()
@@ -90,7 +123,6 @@ $(function () {
 })
 
 //disable時加入字樣
-
 $(function () {
   var txt1 = "<span>can't pick</span>" //命名
   if ($("div").hasClass("disable")) {
@@ -101,82 +133,12 @@ $(function () {
 })
 
 //checkbox label效果
-
 $(function () {
-  $('input[type="checkbox"]').change(function () {
-    $(this).closest("p").toggleClass("active")
-  })
+
 })
 
-//html+css自動計算a herf+background
-
-// $(function(){
-//     $('li').each(function(index){
-//         $($('#demo'+index+'').children('a')).attr('href','./images/demo_'+index+'.jpg');
-//         var myIndex = index + 1;
-//         $($('#demo'+index+'').children('a')).attr('data-title','DEMO_'+myIndex+'');
-//         $($('#demo'+index+'').children('a')).css('background','url(./images/demo_'+index+'.jpg)');
-//         $($('#demo'+index+'').children('a')).css('background-size','cover');
-//     })
-// })
-
-$(function () {
-  $("li").each(function (index) {
-    $($("#demo" + index + "").children("a")).attr(
-      "href",
-      "./img/demo_" + index + ".png"
-    )
-    var myIndex = index + 1
-    $($("#demo" + index + "").children("a")).attr(
-      "data-title",
-      "DEMO_" + myIndex + ""
-    )
-    $($("#demo" + index + "").children("a")).css(
-      "background",
-      "url(./img/demo_" + index + ".png)"
-    )
-    $($("#demo" + index + "").children("a")).css("background-size", "cover")
-  })
-})
-
-//checkbox勾選判定
-
-$(function () {
-  $("li").each(function (index) {
-    var myIndex = index + 1
-    $("#demo" + index + ' input[type="checkbox"]').click(function () {
-      if ($("#demo" + index + ' input[type="checkbox"]').prop("checked")) {
-        $(".shoppingWindow div:nth-of-type(" + myIndex + ")").addClass(
-          "display"
-        )
-        // $('.shoppingWindow div:nth-of-type('+myIndex+')').css('background','url(./images/demo_'+index+'.jpg)');
-        $(".shoppingWindow div:nth-of-type(" + myIndex + ")").css(
-          "background",
-          "url(./img/demo_" + index + ".png)"
-        )
-        $(".shoppingWindow div:nth-of-type(" + myIndex + ")").css(
-          "background-size",
-          "cover"
-        )
-      } else {
-        $(".shoppingWindow div:nth-of-type(" + myIndex + ")").removeClass(
-          "display"
-        )
-      }
-    })
-  })
-  var n = $(".shoppingWindow").children("div")
-  $("li").each(function (index) {
-    $(n).clone().appendTo(".shoppingWindow")
-  })
-  var s = $(".shoppingWindow").children("s")
-  $("li").each(function (index) {
-    $(s).clone().appendTo(".shoppingWindow")
-  })
-})
 
 //shoppingcart
-
 $(function () {
   $(".shoppingcartBtn").click(function () {
     $(".filter,.shoppingcart").fadeIn("500")
