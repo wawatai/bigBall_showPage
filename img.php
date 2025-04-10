@@ -1,5 +1,5 @@
 <?php
-$folder = 'img/new/';
+$folder = 'https://wawatai.github.io/bigBall_showPage/img/new/';
 $images = [];
 
 // 支援的圖片副檔名
