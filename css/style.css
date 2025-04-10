@@ -99,7 +99,7 @@ html body::-webkit-scrollbar-thumb {
 html body header {
   width: 100%;
   height: 50px;
-  background: #FF574D;
+  background: #ff574d;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -117,7 +117,7 @@ html body header .search {
   transition: 0.3s all;
 }
 html body header .search:hover, html body header .search:active, html body header .search.active {
-  background: #54609C;
+  background: #54609c;
 }
 html body header .search:hover i, html body header .search:active i, html body header .search.active i {
   color: #ffffff;
@@ -169,7 +169,7 @@ html body header .shoppingcartBtn {
   position: relative;
 }
 html body header .shoppingcartBtn:hover, html body header .shoppingcartBtn:active, html body header .shoppingcartBtn.active {
-  background: #54609C;
+  background: #54609c;
 }
 html body header .shoppingcartBtn:hover i, html body header .shoppingcartBtn:active i, html body header .shoppingcartBtn.active i {
   color: #ffffff;
@@ -188,7 +188,7 @@ html body header .shoppingcartBtn span {
   position: absolute;
   right: 5px;
   top: 5px;
-  background: #54609C;
+  background: #54609c;
   color: #ffffff;
   padding: 1px 5px;
   width: auto;
@@ -224,7 +224,7 @@ html body main {
 html body main .left {
   width: 15%;
   height: 100%;
-  background: #000000d7;
+  background: rgba(0, 0, 0, 0.8431372549);
   position: fixed;
   left: 0px;
   top: 50px;
@@ -259,10 +259,6 @@ html body main .left ul li {
   cursor: pointer;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   white-space: nowrap;
 }
 html body main .left ul li:hover, html body main .left ul li:active, html body main .left ul li.active {
@@ -360,7 +356,7 @@ html body main .mainBox div span {
   z-index: 10;
   border: solid 1px #54609c;
   padding: 5px 20px 15px;
-  background: #54609c85;
+  background: rgba(84, 96, 156, 0.5215686275);
   text-align: center;
   pointer-events: none;
 }
@@ -453,7 +449,7 @@ html body main .filter {
   position: fixed;
   top: 0px;
   left: 0px;
-  background: #000000d7;
+  background: rgba(0, 0, 0, 0.8431372549);
   z-index: 20;
 }
 html body main .shoppingcart {
@@ -639,17 +635,17 @@ html body main .gotop i {
   font-size: 18px !important;
 }
 
-@media screen and (max-width: 1570px) {
+@media (max-width: 1570px) {
   html body main .mainBox div h1 {
     bottom: 2%;
   }
 }
-@media screen and (max-width: 1240px) {
+@media (max-width: 1240px) {
   html body main .mainBox div h1 {
     bottom: 0%;
   }
 }
-@media screen and (max-width: 1100px) {
+@media (max-width: 1100px) {
   html body main .left {
     min-width: 140px;
   }
@@ -668,25 +664,21 @@ html body main .gotop i {
     bottom: 2%;
   }
 }
-@media screen and (max-width: 980px) {
+@media (max-width: 980px) {
   html body main .shoppingcart .shoppingWindow div {
     width: 95%;
     padding-bottom: 45%;
     margin-top: 3%;
   }
-
   .lb-dataContainer {
     top: -55px;
   }
-
   .lb-outerContainer {
     width: 90% !important;
   }
-
   .lb-image {
     width: 100% !important;
   }
-
   .lb-close {
     width: 50px !important;
     height: 50px !important;
@@ -694,12 +686,11 @@ html body main .gotop i {
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
   }
-
   .lightbox {
     top: 120px !important;
   }
 }
-@media screen and (max-width: 800px) {
+@media (max-width: 800px) {
   html body main .mainBox div span {
     min-width: 105px;
     min-height: 24px;
