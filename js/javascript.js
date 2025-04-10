@@ -60,7 +60,6 @@ $(function () {
 })
 
 //1100以下頁面拖動效果
-
 $(function () {
   var drag = function (obj) {
     obj.bind("mousedown", start)
@@ -131,12 +130,6 @@ $(function () {
     $("div.disable a").attr("data-lightbox", "")
   }
 })
-
-//checkbox label效果
-$(function () {
-
-})
-
 
 //shoppingcart
 $(function () {
