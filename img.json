@@ -243,5 +243,10 @@
     "id": "demo_48",
     "name": "LB_JLBET",
     "sort": "48"
+  },
+  {
+    "id": "demo_49",
+    "name": "LF",
+    "sort": "49"
   }
 ]
