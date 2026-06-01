@@ -623,5 +623,10 @@
     "id": "demo_124",
     "name": "shr_guan_2026",
     "sort": "124"
+  },
+  {
+    "id": "demo_125",
+    "name": "kg",
+    "sort": "125"
   }
 ]
