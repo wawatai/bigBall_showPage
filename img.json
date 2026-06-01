@@ -628,5 +628,10 @@
     "id": "demo_125",
     "name": "kg",
     "sort": "125"
+  },
+  {
+    "id": "demo_126",
+    "name": "dzht",
+    "sort": "126"
   }
 ]
