@@ -1,20 +1,20 @@
 // json獲取生成
-;(async () => {
+async function renderData(url) {
   try {
-    const response = await fetch("./img.json")
-    if (!response.ok) {
-      throw new Error("失敗" + response.status)
-    }
-    const images = await response.json()
+    const response = await fetch(url)
+    if (!response.ok) throw new Error("失敗" + response.status)
+
+    const data = await response.json()
     const gallery = document.querySelector("main .mainBox")
     const list = document.querySelector("main .left ul")
-    images.forEach((src) => {
+    
+    // append gallery item
+    data.reverse().forEach((item) => {
       const div = document.createElement("div")
-      div.setAttribute("id", src.id)
       div.innerHTML = `
-        <a href="./img/${src.id}.png" data-lightbox="demo" data-title="" style="background: url(&quot;./img/${src.id}.png&quot;) 0% 0% / cover;"></a>
+        <a href="./img/${item.imgName}.png" data-lightbox="demo" data-title="" style="background: url(&quot;./img/${item.imgName}.png&quot;) 0% 0% / cover;"></a>
         <h1>
-          ${src.name}
+          ${item.name}
           <p>
             <label>
               <input type="checkbox">
@@ -22,31 +22,39 @@
             </label>
             pick
           </p>
-          <p class="link" onclick="window.open('https://art-demo.sog99.net/lb_login/${src.name}/')">
+          <p class="link" onclick="window.open('https://art-demo.sog99.net/lb_login/${item.name}/')">
             link
           </p>
         </h1>`
       gallery.appendChild(div)
+
+      // Append aside list item
       const li = document.createElement("li")
-      li.setAttribute("id", `btn${src.sort}`)
-      li.innerHTML = `${src.name}<span></span>`
+      li.innerHTML = `${item.name}<span></span>`
       list.appendChild(li)
+
+      // Scroll
       li.addEventListener("click", () => {
         window.scrollTo({
-          top: document.querySelector(`#demo_${src.sort}`).offsetTop-60,
+          top: div.offsetTop-60,
           behavior:"smooth"
         })
       })
-    })
-    document.querySelectorAll('input[type="checkbox"]').forEach(input=>{
-      input.addEventListener('change',()=>{
-        input.closest("p").classList.toggle('active')
+
+      // Checkbox
+      const checkbox = div.querySelector('input[type="checkbox"]')
+      checkbox.addEventListener('change',()=>{
+        checkbox.closest("p").classList.toggle('active')
       })
     })
   } catch (error) {
     console.error("載入圖片失敗:", error)
   }
-})()
+}
+;(async () => {
+  await renderData("./mockup.json")
+  await renderData("./demo.json")
+})();
 
 //header按鈕
 $(function () {
