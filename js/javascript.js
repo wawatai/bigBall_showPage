@@ -22,7 +22,7 @@ async function renderData(url) {
             </label>
             pick
           </p>
-          <p class="link" onclick="window.open('https://art-demo.sog99.net/lb_login/${item.name}/')">
+          <p class="link">
             link
           </p>
         </h1>`
@@ -46,6 +46,14 @@ async function renderData(url) {
       checkbox.addEventListener('change',()=>{
         checkbox.closest("p").classList.toggle('active')
       })
+
+      // 有切版的才加上鏈結 link
+      const isDemo = item.imgName?.startsWith("demo_")
+      if (isDemo) {
+        div.querySelector(".link").addEventListener("click", () => {
+          window.open(`https://art-demo.sog99.net/lb_login/${item.name}/`)
+        })
+      }
     })
   } catch (error) {
     console.error("載入圖片失敗:", error)
